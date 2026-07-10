@@ -14,5 +14,17 @@
 //! Decisions are recorded in `docs/adr/`. Behavior authority order
 //! (ADR-0003): upstream `try.rb` code > shipped `spec/tests` > prose specs.
 
-// M0 skeleton: modules land in M1 (argv, dispatch, emit, scripts, naming,
-// giturl, wrappers, testkeys) and M2 (fuzzy, scan, selector, tui, error).
+pub mod argv;
+pub mod dispatch;
+pub mod emit;
+pub mod env;
+pub mod giturl;
+pub mod help;
+pub mod naming;
+pub mod scripts;
+pub mod testkeys;
+pub mod wrappers;
+
+pub use dispatch::{run, Ctx};
+pub use emit::ScriptOut;
+pub use env::Env;

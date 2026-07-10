@@ -24,6 +24,7 @@ try-me-maybe-core.workspace = true
 clap.workspace = true
 clap_usage.workspace = true
 anyhow.workspace = true
+chrono.workspace = true
 
 [lints]
 workspace = true

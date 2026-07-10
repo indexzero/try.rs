@@ -1,0 +1,19 @@
+# Provenance of spec/tests/ — adopted verbatim from upstream
+#
+# Upstream:  https://github.com/tobi/try
+# Tag:       v1.9.3
+# Commit:    08ca3e7abc5e0015c9af38d9a2ff65d4fc3c3950
+# Date:      2026-03-10
+# License:   MIT (upstream LICENSE applies to everything under spec/tests/)
+# Adopted:   2026-07-10
+#
+# Upstream designed this suite for cross-implementation validation (AGENTS.md:
+# "enabling new implementations (in any language) to be validated against the
+# same test suite"). This port must pass it UNMODIFIED.
+#
+# Changes to spec/tests/ are only permitted via scripts/sync-upstream-spec.sh
+# from a named upstream tag, on a PR carrying the `spec-sync` label
+# (CI-enforced by the spec-guard job).
+
+tag=v1.9.3
+commit=08ca3e7abc5e0015c9af38d9a2ff65d4fc3c3950

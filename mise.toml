@@ -1,0 +1,37 @@
+# Toolchain pin + task runner (exemplar parity: remarkable-mcp.rs mise.toml).
+# Run `mise run ci` before pushing.
+[tools]
+rust = "1.95"
+
+[tasks.build]
+description = "Build the workspace"
+run = "cargo build --all"
+
+[tasks.test]
+description = "Run all tests"
+run = "cargo test --all"
+
+[tasks.lint]
+description = "Clippy with warnings denied (CI gate)"
+run = "cargo clippy --all-targets -- -D warnings"
+
+[tasks.fmt]
+description = "Format all crates"
+run = "cargo fmt --all"
+
+[tasks.smoke]
+description = "Hermetic smoke test against the real binary (no network)"
+run = "scripts/smoke.sh"
+
+[tasks.conformance]
+description = "Run the adopted upstream conformance suite (spec/tests) against the release binary"
+run = ["cargo build --release", "spec/tests/runner.sh target/release/tryme"]
+
+[tasks.ci]
+description = "Pre-push gate: fmt + clippy + test + smoke"
+run = [
+  "cargo fmt --all --check",
+  "cargo clippy --all-targets -- -D warnings",
+  "cargo test --all",
+  "scripts/smoke.sh",
+]

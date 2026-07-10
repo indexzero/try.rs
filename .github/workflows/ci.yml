@@ -79,6 +79,27 @@ jobs:
         with:
           command: check
 
+  conformance:
+    name: conformance suite (shrink-only ratchet)
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install Rust (stable)
+        uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2.9.1
+      # ubuntu runners ship without zsh; without this, test_36's zsh
+      # assertions self-skip and the zsh wrapper is never exercised on Linux.
+      - name: Install zsh (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update -q && sudo apt-get install -y -q zsh
+      - name: Build release binary
+        run: cargo build --release --locked
+      - name: Run adopted upstream suite against the ratchet baseline
+        run: ./scripts/conformance-ratchet.sh target/release/tryme
+
   spec-guard:
     name: spec/tests integrity (spec-sync label required)
     runs-on: ubuntu-latest

@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Hermetic smoke test: build the real binary, drive it, assert the
 # stream/exit contracts. No network, no git remotes, no AI.
-# (Exemplar: remarkable-mcp.rs scripts/smoke.sh. Grows with each milestone —
-# M1 adds init/clone-dry/help/version flows; selector flows join in M2.)
+# (Selector-driving --and-keys flows join in M2 with the TUI.)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -10,25 +9,41 @@ echo "==> building (debug)"
 cargo build --quiet --all
 
 BIN=target/debug/tryme
+fail() { echo "FAIL: $1" >&2; exit 1; }
 
-echo "==> M0: bare invocation exits 2 with stderr-only output"
+echo "==> bare invocation: help on stderr, empty stdout, exit 2"
 set +e
-out=$("$BIN" 2>/dev/null)
-code=$?
+out=$("$BIN" 2>/dev/null); code=$?
 err=$("$BIN" 2>&1 >/dev/null)
 set -e
+[ "$code" -eq 2 ] || fail "expected exit 2, got $code"
+[ -z "$out" ] || fail "stdout must be empty on bare invocation, got: $out"
+[[ "$err" == "try v"* ]] || fail "expected help on stderr, got: ${err:0:60}"
 
-if [ "$code" -ne 2 ]; then
-  echo "FAIL: expected exit 2, got $code" >&2
-  exit 1
-fi
-if [ -n "$out" ]; then
-  echo "FAIL: stdout must be empty on bare invocation (stream contract), got: $out" >&2
-  exit 1
-fi
-if [[ "$err" != tryme* ]]; then
-  echo "FAIL: expected stderr to start with 'tryme', got: $err" >&2
-  exit 1
-fi
+echo "==> --version: stderr only, exit 0"
+set +e
+out=$("$BIN" --version 2>/dev/null); code=$?
+err=$("$BIN" --version 2>&1 >/dev/null)
+set -e
+[ "$code" -eq 0 ] || fail "--version expected exit 0, got $code"
+[ -z "$out" ] || fail "--version stdout must be empty"
+[[ "$err" == "try "* ]] || fail "--version format, got: $err"
+
+echo "==> init: wrapper on stdout, explicit path quoted"
+out=$(SHELL=/bin/bash "$BIN" init /tmp/smoke-tries 2>/dev/null)
+grep -q "try() {" <<<"$out" || fail "init should emit bash function"
+grep -qF -- "--path '/tmp/smoke-tries'" <<<"$out" || fail "init explicit --path form"
+
+echo "==> clone (dry): script bytes on stdout, exit 0"
+out=$("$BIN" --path /tmp/smoke-tries clone https://github.com/user/repo 2>/dev/null)
+head -1 <<<"$out" | grep -q "^# if you can read this" || fail "script warning first line"
+grep -q "git clone 'https://github.com/user/repo'" <<<"$out" || fail "clone command bytes"
+
+echo "==> selector path (test mode): Cancelled. on stdout, exit 1"
+set +e
+out=$("$BIN" --path /tmp/smoke-tries --and-exit exec 2>/dev/null); code=$?
+set -e
+[ "$code" -eq 1 ] || fail "cancel expected exit 1, got $code"
+[ "$out" = "Cancelled." ] || fail "expected Cancelled. on stdout, got: $out"
 
 echo "✅ smoke: stream + exit contracts hold"

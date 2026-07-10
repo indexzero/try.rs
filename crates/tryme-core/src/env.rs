@@ -27,6 +27,9 @@ pub struct Env {
     pub userprofile: Option<String>,
     /// `HOME` — for `~` expansion.
     pub home: Option<String>,
+    /// `PATH` — for resolving a bare `argv[0]` to the real binary location
+    /// (wrapper emission must embed a path that exists).
+    pub path: Option<String>,
     /// `TRY_WIDTH` — terminal width override (TUI layer).
     pub try_width: Option<String>,
     /// `TRY_HEIGHT` — terminal height override (TUI layer).
@@ -48,6 +51,7 @@ impl Env {
             profile: get("PROFILE"),
             userprofile: get("USERPROFILE"),
             home: get("HOME"),
+            path: get("PATH"),
             try_width: get("TRY_WIDTH"),
             try_height: get("TRY_HEIGHT"),
         }

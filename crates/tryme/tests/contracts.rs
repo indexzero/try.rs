@@ -113,3 +113,35 @@ fn and_confirm_is_a_value_not_a_boolean() {
         assert_eq!(stdout, "Cancelled.\n");
     }
 }
+
+#[test]
+fn init_from_bare_path_invocation_embeds_real_binary_path() {
+    // Regression: `tryme install` invoked as a bare PATH command embedded
+    // <cwd>/tryme (nonexistent) in the wrapper because argv[0] has no
+    // separator. Ruby never hits this (shebang $0 is always absolute).
+    let bin_dir = tempfile::tempdir().unwrap();
+    let real = std::path::Path::new(env!("CARGO_BIN_EXE_tryme"));
+    let linked = bin_dir.path().join("tryme");
+    std::os::unix::fs::symlink(real, &linked).unwrap();
+
+    let cwd = tempfile::tempdir().unwrap();
+    let out = std::process::Command::new("tryme") // bare argv[0]
+        .args(["init"])
+        .current_dir(cwd.path())
+        .env("PATH", bin_dir.path())
+        .env("SHELL", "/bin/zsh")
+        .env("TRY_WIDTH", "80")
+        .env("TRY_HEIGHT", "24")
+        .stdin(std::process::Stdio::null())
+        .output()
+        .unwrap();
+    assert_eq!(out.status.code(), Some(0));
+    let wrapper = String::from_utf8_lossy(&out.stdout);
+    // Must embed the PATH-resolved location (symlink UNresolved), never cwd/tryme
+    let embedded = format!("'{}'", linked.display());
+    assert!(
+        wrapper.contains(&embedded),
+        "wrapper should embed {embedded}, got:\n{wrapper}"
+    );
+    assert!(!wrapper.contains(&format!("{}/tryme", cwd.path().display())));
+}

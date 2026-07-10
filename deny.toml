@@ -1,0 +1,27 @@
+# cargo-deny configuration — wired at M0 per owner ruling 2026-07-10
+# (corpus veto: "No cargo audit or cargo deny in CI" is a hard fail; vetoes
+# are not stageable by ADR). Baseline follows SMALL-PACKAGING §9.
+# Schema: cargo-deny v2 (EmbarkStudios/cargo-deny — verified 2026-07-10).
+
+[advisories]
+# v2 defaults deny vulnerabilities; make yanked explicit.
+yanked = "deny"
+
+[licenses]
+allow = [
+  "MIT",
+  "Apache-2.0",
+  "BSD-2-Clause",
+  "BSD-3-Clause",
+  "ISC",
+  "Unicode-3.0",
+  # option-ext (via directories -> dirs-sys) is MPL-2.0; corpus baseline allows it
+  "MPL-2.0",
+]
+
+[bans]
+multiple-versions = "warn"
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"

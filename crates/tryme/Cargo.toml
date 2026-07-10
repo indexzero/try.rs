@@ -1,0 +1,39 @@
+[package]
+name = "try-me-maybe"
+description = "Rust port of tobi/try — instant, fuzzy-searchable, dated experiment directories. Binary: tryme; shell function: try."
+readme = "../../README.md"
+keywords = ["cli", "workspace", "tries", "experiments", "tui"]
+categories = ["command-line-utilities"]
+default-run = "tryme"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+
+# ADR-0001: binary is `tryme` in every channel; the user-facing `try` is the
+# wrapper function emitted by `tryme init`.
+[[bin]]
+name = "tryme"
+path = "src/main.rs"
+
+[dependencies]
+try-me-maybe-core.workspace = true
+clap.workspace = true
+clap_usage.workspace = true
+anyhow.workspace = true
+
+[lints]
+workspace = true
+
+# Present from the first commit so `cargo binstall` works the moment
+# releases exist. UNVERIFIED until the release pipeline lands: pkg-url and
+# pkg-fmt must match dist's actual artifact naming — verify with
+# `cargo binstall --dry-run` before the first release (see
+# docs/adr/0004-staging.md).
+[package.metadata.binstall]
+pkg-url = "{ repo }/releases/download/v{ version }/{ name }-{ target }{ archive-suffix }"
+bin-dir = "{ name }-{ target }/{ bin }{ binary-ext }"
+pkg-fmt = "tgz"

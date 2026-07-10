@@ -1,0 +1,105 @@
+name: CI
+
+# Gate + msrv jobs, extended with cargo audit + cargo deny from the first
+# commit (see docs/adr/0004-staging.md) and a spec-guard protecting the
+# adopted conformance suite. The conformance job (spec/tests/runner.sh)
+# enters at M1. Action versions verified against their repos 2026-07-10.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Cancel superseded runs on the same ref.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: 1
+
+jobs:
+  gate:
+    name: fmt + clippy + test + smoke
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install Rust (stable, with rustfmt + clippy)
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Cache cargo + target
+        uses: Swatinem/rust-cache@v2.9.1
+
+      - name: Format check
+        run: cargo fmt --all --check
+
+      - name: Clippy (warnings denied)
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+      - name: Test
+        run: cargo test --all --locked
+
+      - name: Smoke test (no network)
+        run: ./scripts/smoke.sh
+
+  msrv:
+    name: MSRV build (1.95)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install Rust 1.95 (declared MSRV)
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: "1.95"
+      - uses: Swatinem/rust-cache@v2.9.1
+      - name: Build on MSRV
+        run: cargo build --all --locked
+
+  audit:
+    name: cargo audit (RustSec advisories)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Audit dependencies
+        uses: rustsec/audit-check@v2.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  deny:
+    name: cargo deny (licenses, bans, sources)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check licenses, bans, and sources
+        uses: EmbarkStudios/cargo-deny-action@v2
+        with:
+          command: check
+
+  spec-guard:
+    name: spec/tests integrity (spec-sync label required)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Fail if spec/tests changed without the spec-sync label
+        env:
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ' ') }}
+        run: |
+          base="origin/${{ github.base_ref }}"
+          if git diff --name-only "$base"...HEAD | grep -q '^spec/tests/'; then
+            case " $LABELS " in
+              *" spec-sync "*)
+                echo "spec/tests changed on a spec-sync PR — OK" ;;
+              *)
+                echo "::error::spec/tests/ may only change via scripts/sync-upstream-spec.sh on a PR labeled 'spec-sync' (see spec/UPSTREAM)"
+                exit 1 ;;
+            esac
+          else
+            echo "spec/tests unchanged — OK"
+          fi

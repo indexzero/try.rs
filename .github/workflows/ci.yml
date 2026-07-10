@@ -34,14 +34,19 @@ jobs:
       - name: Cache cargo + target
         uses: Swatinem/rust-cache@v2.9.1
 
+      - name: Install pinned tools (mise.toml)
+        uses: jdx/mise-action@v4
+
       - name: Format check
         run: cargo fmt --all --check
 
       - name: Clippy (warnings denied)
         run: cargo clippy --all-targets --all-features -- -D warnings
 
-      - name: Test
-        run: cargo test --all --locked
+      - name: Test (nextest + doctests)
+        run: |
+          cargo nextest run --all --locked
+          cargo test --doc --all --locked
 
       - name: Smoke test (no network)
         run: ./scripts/smoke.sh
@@ -99,6 +104,21 @@ jobs:
         run: cargo build --release --locked
       - name: Run adopted upstream suite against the ratchet baseline
         run: ./scripts/conformance-ratchet.sh target/release/tryme
+
+  quality:
+    name: cargo machete + CLI-docs freshness
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install Rust (stable)
+        uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2.9.1
+      - name: Install pinned tools (mise.toml)
+        uses: jdx/mise-action@v4
+      - name: Unused dependencies
+        run: cargo machete
+      - name: Completions + man page fresh (one spec, every artifact)
+        run: ./scripts/gen-cli-docs.sh --check
 
   spec-guard:
     name: spec/tests integrity (spec-sync label required)

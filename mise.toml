@@ -1,15 +1,20 @@
 # Toolchain pin + task runner (exemplar parity: remarkable-mcp.rs mise.toml).
-# Run `mise run ci` before pushing.
+# Run `mise run ci` before pushing. Versions verified 2026-07-10.
 [tools]
 rust = "1.95"
+"cargo:cargo-nextest" = "0.9.140"
+"cargo:cargo-machete" = "0.9.2"
+"cargo:usage-cli" = "3.4.0"
+git-cliff = "2.13.1"
+hk = "1.50.0"
 
 [tasks.build]
 description = "Build the workspace"
 run = "cargo build --all"
 
 [tasks.test]
-description = "Run all tests"
-run = "cargo test --all"
+description = "Run all tests (nextest + doctests)"
+run = ["cargo nextest run --all --locked", "cargo test --doc --all --locked"]
 
 [tasks.lint]
 description = "Clippy with warnings denied (CI gate)"
@@ -27,11 +32,23 @@ run = "scripts/smoke.sh"
 description = "Run the adopted upstream conformance suite (spec/tests) against the release binary"
 run = ["cargo build --release", "spec/tests/runner.sh target/release/tryme"]
 
+[tasks.cli-docs]
+description = "Regenerate completions + man page from try.usage.kdl"
+run = "scripts/gen-cli-docs.sh"
+
+[tasks.changelog]
+description = "Regenerate CHANGELOG.md from conventional commits (git-cliff)"
+run = "git-cliff -o CHANGELOG.md"
+
 [tasks.ci]
-description = "Pre-push gate: fmt + clippy + test + smoke"
+description = "Pre-push gate: fmt + clippy + test + smoke + conformance ratchet + docs freshness"
 run = [
   "cargo fmt --all --check",
   "cargo clippy --all-targets -- -D warnings",
-  "cargo test --all",
+  "cargo nextest run --all --locked",
+  "cargo test --doc --all --locked",
   "scripts/smoke.sh",
+  "cargo build --release",
+  "scripts/conformance-ratchet.sh",
+  "scripts/gen-cli-docs.sh --check",
 ]

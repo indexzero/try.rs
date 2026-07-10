@@ -1,0 +1,41 @@
+amends "package://github.com/jdx/hk/releases/download/v1.50.0/hk@1.50.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.50.0/hk@1.50.0#/Builtins.pkl"
+
+// Project hooks: fmt + clippy + usage-spec/CLI-docs freshness.
+// Install with `hk install --mise`.
+local linters = new Mapping<String, Step> {
+    ["fmt"] {
+        glob = "**/*.rs"
+        check = "cargo fmt --all --check"
+        fix = "cargo fmt --all"
+    }
+    ["clippy"] {
+        glob = "**/*.rs"
+        check = "cargo clippy --all-targets -- -D warnings"
+    }
+    ["usage-spec-fresh"] {
+        glob = List("crates/tryme/src/cli.rs", "try.usage.kdl")
+        check = "cargo run --quiet -- --usage-spec | diff -q try.usage.kdl - >/dev/null"
+        fix = "cargo run --quiet -- --usage-spec > try.usage.kdl"
+    }
+    ["cli-docs-fresh"] {
+        glob = List("try.usage.kdl", "completions/*", "docs/man/*")
+        check = "scripts/gen-cli-docs.sh --check"
+        fix = "scripts/gen-cli-docs.sh"
+    }
+}
+
+hooks {
+    ["pre-commit"] {
+        fix = true
+        stash = "git"
+        steps = linters
+    }
+    ["fix"] {
+        fix = true
+        steps = linters
+    }
+    ["check"] {
+        steps = linters
+    }
+}

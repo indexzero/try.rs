@@ -127,6 +127,21 @@ jobs:
       - name: Completions + man page fresh (one spec, every artifact)
         run: ./scripts/gen-cli-docs.sh --check
 
+  nix:
+    name: nix flake check (build + conformance in sandbox)
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v22
+      - name: Nix cache
+        uses: DeterminateSystems/magic-nix-cache-action@v13
+      - name: Flake check
+        run: nix flake check -L
+
   spec-guard:
     name: spec/tests integrity (spec-sync label required)
     runs-on: ubuntu-latest

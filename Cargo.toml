@@ -29,7 +29,7 @@ directories = "6"
 tempfile = "3"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-try-me-maybe-core = { path = "crates/tryme-core" }
+try-me-maybe-core = { path = "crates/tryme-core", version = "0.1.0" }
 
 [workspace.lints.rust]
 unsafe_code = "forbid"

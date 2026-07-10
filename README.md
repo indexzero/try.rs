@@ -17,6 +17,9 @@ findable.
 
 ## Install
 
+> Package channels go live with the first tagged release. Until then, build
+> from source: `cargo install --git https://github.com/indexzero/try.rs try-me-maybe`
+
 ```sh
 # mise
 mise use -g cargo:try-me-maybe
@@ -27,7 +30,7 @@ brew install indexzero/tap/try-me-maybe
 # prebuilt binary
 cargo binstall try-me-maybe
 
-# from source
+# from source (crates.io)
 cargo install try-me-maybe
 ```
 
@@ -40,8 +43,6 @@ eval "$(tryme init ~/src/tries)"
 # or let it edit your rc file for you (idempotent):
 tryme install
 ```
-
-Optional, for direct-binary purists (ccat-style): `ln -s $(which tryme) ~/bin/try`.
 
 ## Usage
 

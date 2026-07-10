@@ -36,6 +36,11 @@ jobs:
 
       - name: Install pinned tools (mise.toml)
         uses: jdx/mise-action@v4
+        env:
+          # dtolnay's stable toolchain stays authoritative in this job; the
+          # rust pin in mise.toml is for local dev (verified: with this set,
+          # mise does not shim rustc/cargo)
+          MISE_DISABLE_TOOLS: rust
 
       - name: Format check
         run: cargo fmt --all --check
@@ -115,6 +120,8 @@ jobs:
       - uses: Swatinem/rust-cache@v2.9.1
       - name: Install pinned tools (mise.toml)
         uses: jdx/mise-action@v4
+        env:
+          MISE_DISABLE_TOOLS: rust
       - name: Unused dependencies
         run: cargo machete
       - name: Completions + man page fresh (one spec, every artifact)

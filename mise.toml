@@ -37,8 +37,8 @@ description = "Regenerate completions + man page from try.usage.kdl"
 run = "scripts/gen-cli-docs.sh"
 
 [tasks.changelog]
-description = "Regenerate CHANGELOG.md from conventional commits (git-cliff)"
-run = "git-cliff -o CHANGELOG.md"
+description = "Roll CHANGELOG.md from conventional commits (git-cliff --bump computes the next version)"
+run = "git-cliff --bump -o CHANGELOG.md"
 
 [tasks.ci]
 description = "Pre-push gate: fmt + clippy + test + smoke + conformance ratchet + docs freshness"

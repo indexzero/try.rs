@@ -1,0 +1,1549 @@
+[
+  {
+    "text": "2025-11-01-alpha",
+    "base_score": 3.7,
+    "query": "",
+    "score_bits": 4615514078110652826,
+    "score": 3.7,
+    "positions": []
+  },
+  {
+    "text": "2025-11-01-alpha",
+    "base_score": 3.7,
+    "query": "a",
+    "score_bits": 4595750204361307687,
+    "score": 0.18269230769230768,
+    "positions": [
+      11
+    ]
+  },
+  {
+    "text": "2025-11-01-alpha",
+    "base_score": 3.7,
+    "query": "alpha",
+    "score_bits": 4611972906384419919,
+    "score": 2.1274038461538463,
+    "positions": [
+      11,
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  {
+    "text": "2025-11-01-alpha",
+    "base_score": 3.7,
+    "query": "beta",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-01-alpha",
+    "base_score": 3.7,
+    "query": "ist",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-01-alpha",
+    "base_score": 3.7,
+    "query": "İST",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-01-alpha",
+    "base_score": 3.7,
+    "query": "pro",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-01-alpha",
+    "base_score": 3.7,
+    "query": "z-x",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-01-alpha",
+    "base_score": 3.7,
+    "query": "é",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-01-alpha",
+    "base_score": 3.7,
+    "query": "rocket",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-01-alpha",
+    "base_score": 3.7,
+    "query": "AB",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-01-alpha",
+    "base_score": 3.7,
+    "query": "2025",
+    "score_bits": 4618051683285305817,
+    "score": 5.653846153846154,
+    "positions": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "text": "2025-11-01-alpha",
+    "base_score": 3.7,
+    "query": "long name",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-01-alpha",
+    "base_score": 3.7,
+    "query": "ss",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-01-alpha",
+    "base_score": 3.7,
+    "query": "-",
+    "score_bits": 4600184517840564792,
+    "score": 0.3615384615384616,
+    "positions": [
+      4
+    ]
+  },
+  {
+    "text": "2025-11-15-beta",
+    "base_score": 2.4,
+    "query": "",
+    "score_bits": 4612586738352862003,
+    "score": 2.4,
+    "positions": []
+  },
+  {
+    "text": "2025-11-15-beta",
+    "base_score": 2.4,
+    "query": "a",
+    "score_bits": 4591197642522603728,
+    "score": 0.09066666666666667,
+    "positions": [
+      14
+    ]
+  },
+  {
+    "text": "2025-11-15-beta",
+    "base_score": 2.4,
+    "query": "alpha",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-15-beta",
+    "base_score": 2.4,
+    "query": "beta",
+    "score_bits": 4609115964240035141,
+    "score": 1.4293333333333333,
+    "positions": [
+      11,
+      12,
+      13,
+      14
+    ]
+  },
+  {
+    "text": "2025-11-15-beta",
+    "base_score": 2.4,
+    "query": "ist",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-15-beta",
+    "base_score": 2.4,
+    "query": "İST",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-15-beta",
+    "base_score": 2.4,
+    "query": "pro",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-15-beta",
+    "base_score": 2.4,
+    "query": "z-x",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-15-beta",
+    "base_score": 2.4,
+    "query": "é",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-15-beta",
+    "base_score": 2.4,
+    "query": "rocket",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-15-beta",
+    "base_score": 2.4,
+    "query": "AB",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-15-beta",
+    "base_score": 2.4,
+    "query": "2025",
+    "score_bits": 4617720841928064369,
+    "score": 5.36,
+    "positions": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "text": "2025-11-15-beta",
+    "base_score": 2.4,
+    "query": "long name",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-15-beta",
+    "base_score": 2.4,
+    "query": "ss",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-15-beta",
+    "base_score": 2.4,
+    "query": "-",
+    "score_bits": 4598571536312485020,
+    "score": 0.272,
+    "positions": [
+      4
+    ]
+  },
+  {
+    "text": "2025-11-20-gamma",
+    "base_score": 2.1,
+    "query": "",
+    "score_bits": 4611911198408756429,
+    "score": 2.1,
+    "positions": []
+  },
+  {
+    "text": "2025-11-20-gamma",
+    "base_score": 2.1,
+    "query": "a",
+    "score_bits": 4591273253252442343,
+    "score": 0.09171597633136096,
+    "positions": [
+      12
+    ]
+  },
+  {
+    "text": "2025-11-20-gamma",
+    "base_score": 2.1,
+    "query": "alpha",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-20-gamma",
+    "base_score": 2.1,
+    "query": "beta",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-20-gamma",
+    "base_score": 2.1,
+    "query": "ist",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-20-gamma",
+    "base_score": 2.1,
+    "query": "İST",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-20-gamma",
+    "base_score": 2.1,
+    "query": "pro",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-20-gamma",
+    "base_score": 2.1,
+    "query": "z-x",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-20-gamma",
+    "base_score": 2.1,
+    "query": "é",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-20-gamma",
+    "base_score": 2.1,
+    "query": "rocket",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-20-gamma",
+    "base_score": 2.1,
+    "query": "AB",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-20-gamma",
+    "base_score": 2.1,
+    "query": "2025",
+    "score_bits": 4617358821804171894,
+    "score": 5.038461538461538,
+    "positions": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "text": "2025-11-20-gamma",
+    "base_score": 2.1,
+    "query": "long name",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-20-gamma",
+    "base_score": 2.1,
+    "query": "ss",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-20-gamma",
+    "base_score": 2.1,
+    "query": "-",
+    "score_bits": 4597759502656596064,
+    "score": 0.2384615384615385,
+    "positions": [
+      4
+    ]
+  },
+  {
+    "text": "2025-11-25-project-with-long-name",
+    "base_score": 2.0,
+    "query": "",
+    "score_bits": 4611686018427387904,
+    "score": 2.0,
+    "positions": []
+  },
+  {
+    "text": "2025-11-25-project-with-long-name",
+    "base_score": 2.0,
+    "query": "a",
+    "score_bits": 4582144026573128626,
+    "score": 0.02250562640660165,
+    "positions": [
+      30
+    ]
+  },
+  {
+    "text": "2025-11-25-project-with-long-name",
+    "base_score": 2.0,
+    "query": "alpha",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-25-project-with-long-name",
+    "base_score": 2.0,
+    "query": "beta",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-25-project-with-long-name",
+    "base_score": 2.0,
+    "query": "ist",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-25-project-with-long-name",
+    "base_score": 2.0,
+    "query": "İST",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-25-project-with-long-name",
+    "base_score": 2.0,
+    "query": "pro",
+    "score_bits": 4602648894922631161,
+    "score": 0.4983388704318937,
+    "positions": [
+      11,
+      12,
+      13
+    ]
+  },
+  {
+    "text": "2025-11-25-project-with-long-name",
+    "base_score": 2.0,
+    "query": "z-x",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-25-project-with-long-name",
+    "base_score": 2.0,
+    "query": "é",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-25-project-with-long-name",
+    "base_score": 2.0,
+    "query": "rocket",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-25-project-with-long-name",
+    "base_score": 2.0,
+    "query": "AB",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-25-project-with-long-name",
+    "base_score": 2.0,
+    "query": "2025",
+    "score_bits": 4613990185678600716,
+    "score": 3.0232558139534884,
+    "positions": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "text": "2025-11-25-project-with-long-name",
+    "base_score": 2.0,
+    "query": "long name",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-25-project-with-long-name",
+    "base_score": 2.0,
+    "query": "ss",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2025-11-25-project-with-long-name",
+    "base_score": 2.0,
+    "query": "-",
+    "score_bits": 4594195294293181560,
+    "score": 0.13953488372093026,
+    "positions": [
+      4
+    ]
+  },
+  {
+    "text": "no-date-prefix",
+    "base_score": 0.4,
+    "query": "",
+    "score_bits": 4600877379321698714,
+    "score": 0.4,
+    "positions": []
+  },
+  {
+    "text": "no-date-prefix",
+    "base_score": 0.4,
+    "query": "a",
+    "score_bits": 4593071139967589853,
+    "score": 0.11666666666666665,
+    "positions": [
+      4
+    ]
+  },
+  {
+    "text": "no-date-prefix",
+    "base_score": 0.4,
+    "query": "alpha",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "no-date-prefix",
+    "base_score": 0.4,
+    "query": "beta",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "no-date-prefix",
+    "base_score": 0.4,
+    "query": "ist",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "no-date-prefix",
+    "base_score": 0.4,
+    "query": "İST",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "no-date-prefix",
+    "base_score": 0.4,
+    "query": "pro",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "no-date-prefix",
+    "base_score": 0.4,
+    "query": "z-x",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "no-date-prefix",
+    "base_score": 0.4,
+    "query": "é",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "no-date-prefix",
+    "base_score": 0.4,
+    "query": "rocket",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "no-date-prefix",
+    "base_score": 0.4,
+    "query": "AB",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "no-date-prefix",
+    "base_score": 0.4,
+    "query": "2025",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "no-date-prefix",
+    "base_score": 0.4,
+    "query": "long name",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "no-date-prefix",
+    "base_score": 0.4,
+    "query": "ss",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "no-date-prefix",
+    "base_score": 0.4,
+    "query": "-",
+    "score_bits": 4596173619710889528,
+    "score": 0.19444444444444442,
+    "positions": [
+      2
+    ]
+  },
+  {
+    "text": "İstanbul",
+    "base_score": 1.0,
+    "query": "",
+    "score_bits": 4607182418800017408,
+    "score": 1.0,
+    "positions": []
+  },
+  {
+    "text": "İstanbul",
+    "base_score": 1.0,
+    "query": "a",
+    "score_bits": 4597174419628082973,
+    "score": 0.22222222222222224,
+    "positions": [
+      4
+    ]
+  },
+  {
+    "text": "İstanbul",
+    "base_score": 1.0,
+    "query": "alpha",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "İstanbul",
+    "base_score": 1.0,
+    "query": "beta",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "İstanbul",
+    "base_score": 1.0,
+    "query": "ist",
+    "score_bits": 4616015303944077772,
+    "score": 3.9225889843221236,
+    "positions": [
+      0,
+      2,
+      3
+    ]
+  },
+  {
+    "text": "İstanbul",
+    "base_score": 1.0,
+    "query": "İST",
+    "score_bits": 4619817517754584633,
+    "score": 7.222222222222222,
+    "positions": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "text": "İstanbul",
+    "base_score": 1.0,
+    "query": "pro",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "İstanbul",
+    "base_score": 1.0,
+    "query": "z-x",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "İstanbul",
+    "base_score": 1.0,
+    "query": "é",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "İstanbul",
+    "base_score": 1.0,
+    "query": "rocket",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "İstanbul",
+    "base_score": 1.0,
+    "query": "AB",
+    "score_bits": 4604486283213415229,
+    "score": 0.7006688194243008,
+    "positions": [
+      4,
+      6
+    ]
+  },
+  {
+    "text": "İstanbul",
+    "base_score": 1.0,
+    "query": "2025",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "İstanbul",
+    "base_score": 1.0,
+    "query": "long name",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "İstanbul",
+    "base_score": 1.0,
+    "query": "ss",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "İstanbul",
+    "base_score": 1.0,
+    "query": "-",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "café-experiment",
+    "base_score": 2.2,
+    "query": "",
+    "score_bits": 4612136378390124954,
+    "score": 2.2,
+    "positions": []
+  },
+  {
+    "text": "café-experiment",
+    "base_score": 2.2,
+    "query": "a",
+    "score_bits": 4603939827068310652,
+    "score": 0.6400000000000001,
+    "positions": [
+      1
+    ]
+  },
+  {
+    "text": "café-experiment",
+    "base_score": 2.2,
+    "query": "alpha",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "café-experiment",
+    "base_score": 2.2,
+    "query": "beta",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "café-experiment",
+    "base_score": 2.2,
+    "query": "ist",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "café-experiment",
+    "base_score": 2.2,
+    "query": "İST",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "café-experiment",
+    "base_score": 2.2,
+    "query": "pro",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "café-experiment",
+    "base_score": 2.2,
+    "query": "z-x",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "café-experiment",
+    "base_score": 2.2,
+    "query": "é",
+    "score_bits": 4599436227440940156,
+    "score": 0.32000000000000006,
+    "positions": [
+      3
+    ]
+  },
+  {
+    "text": "café-experiment",
+    "base_score": 2.2,
+    "query": "rocket",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "café-experiment",
+    "base_score": 2.2,
+    "query": "AB",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "café-experiment",
+    "base_score": 2.2,
+    "query": "2025",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "café-experiment",
+    "base_score": 2.2,
+    "query": "long name",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "café-experiment",
+    "base_score": 2.2,
+    "query": "ss",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "café-experiment",
+    "base_score": 2.2,
+    "query": "-",
+    "score_bits": 4599724457817091868,
+    "score": 0.3360000000000001,
+    "positions": [
+      4
+    ]
+  },
+  {
+    "text": "🚀-rocket-try",
+    "base_score": 1.5,
+    "query": "",
+    "score_bits": 4609434218613702656,
+    "score": 1.5,
+    "positions": []
+  },
+  {
+    "text": "🚀-rocket-try",
+    "base_score": 1.5,
+    "query": "a",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "🚀-rocket-try",
+    "base_score": 1.5,
+    "query": "alpha",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "🚀-rocket-try",
+    "base_score": 1.5,
+    "query": "beta",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "🚀-rocket-try",
+    "base_score": 1.5,
+    "query": "ist",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "🚀-rocket-try",
+    "base_score": 1.5,
+    "query": "İST",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "🚀-rocket-try",
+    "base_score": 1.5,
+    "query": "pro",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "🚀-rocket-try",
+    "base_score": 1.5,
+    "query": "z-x",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "🚀-rocket-try",
+    "base_score": 1.5,
+    "query": "é",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "🚀-rocket-try",
+    "base_score": 1.5,
+    "query": "rocket",
+    "score_bits": 4618786864430770362,
+    "score": 6.306818181818182,
+    "positions": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "text": "🚀-rocket-try",
+    "base_score": 1.5,
+    "query": "AB",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "🚀-rocket-try",
+    "base_score": 1.5,
+    "query": "2025",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "🚀-rocket-try",
+    "base_score": 1.5,
+    "query": "long name",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "🚀-rocket-try",
+    "base_score": 1.5,
+    "query": "ss",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "🚀-rocket-try",
+    "base_score": 1.5,
+    "query": "-",
+    "score_bits": 4605340037134274932,
+    "score": 0.7954545454545454,
+    "positions": [
+      1
+    ]
+  },
+  {
+    "text": "a",
+    "base_score": 0.0,
+    "query": "",
+    "score_bits": 0,
+    "score": 0.0,
+    "positions": []
+  },
+  {
+    "text": "a",
+    "base_score": 0.0,
+    "query": "a",
+    "score_bits": 4610867182131502359,
+    "score": 1.8181818181818181,
+    "positions": [
+      0
+    ]
+  },
+  {
+    "text": "a",
+    "base_score": 0.0,
+    "query": "alpha",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "a",
+    "base_score": 0.0,
+    "query": "beta",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "a",
+    "base_score": 0.0,
+    "query": "ist",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "a",
+    "base_score": 0.0,
+    "query": "İST",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "a",
+    "base_score": 0.0,
+    "query": "pro",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "a",
+    "base_score": 0.0,
+    "query": "z-x",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "a",
+    "base_score": 0.0,
+    "query": "é",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "a",
+    "base_score": 0.0,
+    "query": "rocket",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "a",
+    "base_score": 0.0,
+    "query": "AB",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "a",
+    "base_score": 0.0,
+    "query": "2025",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "a",
+    "base_score": 0.0,
+    "query": "long name",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "a",
+    "base_score": 0.0,
+    "query": "ss",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "a",
+    "base_score": 0.0,
+    "query": "-",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "ab",
+    "base_score": 0.0,
+    "query": "",
+    "score_bits": 0,
+    "score": 0.0,
+    "positions": []
+  },
+  {
+    "text": "ab",
+    "base_score": 0.0,
+    "query": "a",
+    "score_bits": 4610184818551597739,
+    "score": 1.6666666666666667,
+    "positions": [
+      0
+    ]
+  },
+  {
+    "text": "ab",
+    "base_score": 0.0,
+    "query": "alpha",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "ab",
+    "base_score": 0.0,
+    "query": "beta",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "ab",
+    "base_score": 0.0,
+    "query": "ist",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "ab",
+    "base_score": 0.0,
+    "query": "İST",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "ab",
+    "base_score": 0.0,
+    "query": "pro",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "ab",
+    "base_score": 0.0,
+    "query": "z-x",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "ab",
+    "base_score": 0.0,
+    "query": "é",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "ab",
+    "base_score": 0.0,
+    "query": "rocket",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "ab",
+    "base_score": 0.0,
+    "query": "AB",
+    "score_bits": 4616377268039232171,
+    "score": 4.166666666666667,
+    "positions": [
+      0,
+      1
+    ]
+  },
+  {
+    "text": "ab",
+    "base_score": 0.0,
+    "query": "2025",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "ab",
+    "base_score": 0.0,
+    "query": "long name",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "ab",
+    "base_score": 0.0,
+    "query": "ss",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "ab",
+    "base_score": 0.0,
+    "query": "-",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2024-01-15-feature1",
+    "base_score": 1.1,
+    "query": "",
+    "score_bits": 4607632778762754458,
+    "score": 1.1,
+    "positions": []
+  },
+  {
+    "text": "2024-01-15-feature1",
+    "base_score": 1.1,
+    "query": "a",
+    "score_bits": 4587615054901786977,
+    "score": 0.05172413793103448,
+    "positions": [
+      13
+    ]
+  },
+  {
+    "text": "2024-01-15-feature1",
+    "base_score": 1.1,
+    "query": "alpha",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2024-01-15-feature1",
+    "base_score": 1.1,
+    "query": "beta",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2024-01-15-feature1",
+    "base_score": 1.1,
+    "query": "ist",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2024-01-15-feature1",
+    "base_score": 1.1,
+    "query": "İST",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2024-01-15-feature1",
+    "base_score": 1.1,
+    "query": "pro",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2024-01-15-feature1",
+    "base_score": 1.1,
+    "query": "z-x",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2024-01-15-feature1",
+    "base_score": 1.1,
+    "query": "é",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2024-01-15-feature1",
+    "base_score": 1.1,
+    "query": "rocket",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2024-01-15-feature1",
+    "base_score": 1.1,
+    "query": "AB",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2024-01-15-feature1",
+    "base_score": 1.1,
+    "query": "2025",
+    "score_bits": 4609422371938998539,
+    "score": 1.497369509795649,
+    "positions": [
+      0,
+      1,
+      2,
+      9
+    ]
+  },
+  {
+    "text": "2024-01-15-feature1",
+    "base_score": 1.1,
+    "query": "long name",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2024-01-15-feature1",
+    "base_score": 1.1,
+    "query": "ss",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "2024-01-15-feature1",
+    "base_score": 1.1,
+    "query": "-",
+    "score_bits": 4594385983996730206,
+    "score": 0.14482758620689656,
+    "positions": [
+      4
+    ]
+  },
+  {
+    "text": "straße-test",
+    "base_score": 0.9,
+    "query": "",
+    "score_bits": 4606281698874543309,
+    "score": 0.9,
+    "positions": []
+  },
+  {
+    "text": "straße-test",
+    "base_score": 0.9,
+    "query": "a",
+    "score_bits": 4597317391044824892,
+    "score": 0.22619047619047616,
+    "positions": [
+      3
+    ]
+  },
+  {
+    "text": "straße-test",
+    "base_score": 0.9,
+    "query": "alpha",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "straße-test",
+    "base_score": 0.9,
+    "query": "beta",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "straße-test",
+    "base_score": 0.9,
+    "query": "ist",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "straße-test",
+    "base_score": 0.9,
+    "query": "İST",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "straße-test",
+    "base_score": 0.9,
+    "query": "pro",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "straße-test",
+    "base_score": 0.9,
+    "query": "z-x",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "straße-test",
+    "base_score": 0.9,
+    "query": "é",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "straße-test",
+    "base_score": 0.9,
+    "query": "rocket",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "straße-test",
+    "base_score": 0.9,
+    "query": "AB",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "straße-test",
+    "base_score": 0.9,
+    "query": "2025",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "straße-test",
+    "base_score": 0.9,
+    "query": "long name",
+    "score_bits": null,
+    "score": null,
+    "positions": null
+  },
+  {
+    "text": "straße-test",
+    "base_score": 0.9,
+    "query": "ss",
+    "score_bits": 4601506453555363163,
+    "score": 0.4349206349206349,
+    "positions": [
+      0,
+      9
+    ]
+  },
+  {
+    "text": "straße-test",
+    "base_score": 0.9,
+    "query": "-",
+    "score_bits": 4593824803578700834,
+    "score": 0.12925170068027209,
+    "positions": [
+      6
+    ]
+  }
+]

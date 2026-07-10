@@ -35,6 +35,21 @@ Authority order: **(1) upstream `try.rb`/`lib/*` code at the pinned tag, (2) the
   not-guaranteed rather than replicated.
 - **Fuzzy result limit** reads the controlling tty directly and ignores `TRY_HEIGHT`
   (`try.rb:167`); only the render viewport honors the env var. Port both as-is.
+- **Error-path divergences (recorded, not replicated):** Ruby crashes with a
+  traceback where the port degrades gracefully — `ELOOP` symlink cycles in the
+  scan (Ruby rescues only ENOENT/EACCES), `File.realpath` failures, non-UTF-8
+  directory names (Ruby raises `ArgumentError` on the date regex), and
+  `mkdir_p` over an existing file. Deliberate: a selector that survives beats
+  byte-parity on crash messages nobody greps.
+- **Line-anchor regexes on newline-containing names:** Ruby's `/^…/` matches
+  after embedded `\n` in a dirname; the port anchors at string start only.
+  Pathological input; recorded rather than replicated.
+- **Delete error strings:** the "Error: …" status line renders Rust's OS error
+  text, not Ruby's `rb_check_realpath_internal` phrasing. Interactive-only.
+- **tmux rename-emoji test:** `test_21_tmux_rename.sh:31` asserts 📝 but the shipped
+  code renders ✏️ (`try.rb:597`) — upstream Ruby fails its own test (36/37). The port
+  matches the code and reproduces upstream's exact 36/37 result. Broken shipped test;
+  code wins.
 
 ## Consequences
 

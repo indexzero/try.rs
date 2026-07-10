@@ -18,11 +18,15 @@ pub mod argv;
 pub mod dispatch;
 pub mod emit;
 pub mod env;
+pub mod fuzzy;
 pub mod giturl;
 pub mod help;
 pub mod naming;
+pub mod scan;
 pub mod scripts;
+pub mod selector;
 pub mod testkeys;
+pub mod tui;
 pub mod wrappers;
 
 pub use dispatch::{run, Ctx};

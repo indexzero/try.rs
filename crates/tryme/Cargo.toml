@@ -26,6 +26,9 @@ clap_usage.workspace = true
 anyhow.workspace = true
 chrono.workspace = true
 
+[dev-dependencies]
+tempfile.workspace = true
+
 [lints]
 workspace = true
 

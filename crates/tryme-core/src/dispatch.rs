@@ -40,6 +40,13 @@ pub fn run<W: Write>(
 ) -> u8 {
     let n = normalize(args);
 
+    // Color gate: NO_COLORS at "module load" (tui.rb:25), then the CLI
+    // aliases, then NO_COLOR (try.rb:1009-1013)
+    crate::tui::set_colors_enabled(ctx.env.no_colors.as_deref().unwrap_or("").is_empty());
+    if n.colors_disabled || ctx.env.no_color.as_deref().is_some_and(|v| !v.is_empty()) {
+        crate::tui::set_colors_enabled(false);
+    }
+
     // --help / -h anywhere → help on stderr, exit 0 (try.rb:1016-1019)
     if n.help {
         let _ = write!(err, "{}", global_help(&ctx.version));
@@ -194,6 +201,8 @@ fn cmd_cd(
     n: &Normalized,
     err: &mut dyn Write,
 ) -> Result<Option<Vec<String>>, u8> {
+    use crate::selector::Selection;
+
     if args.first().map(String::as_str) == Some("clone") {
         return cmd_clone(&args[1..], tries_path, &ctx.today, err).map(Some);
     }
@@ -242,13 +251,39 @@ fn cmd_cd(
         )));
     }
 
-    // Interactive selector: M1 stub. Upstream checks tty only when no test
-    // keys are injected (try.rb:57-62); the real selector lands in M2.
-    let _ = search_term;
-    if !n.and_exit && parse_test_keys(n.and_keys_raw.as_deref().unwrap_or("")).is_none() {
-        let _ = writeln!(err, "Error: try requires an interactive terminal");
-    }
-    Ok(None)
+    // Regular interactive selector (try.rb:1361-1385)
+    let test_keys = n.and_keys_raw.as_deref().and_then(parse_test_keys);
+    let selector = crate::selector::Selector::new(
+        &search_term,
+        tries_path.to_path_buf(),
+        &ctx.env,
+        n.and_type.as_deref(),
+        n.and_exit,
+        test_keys,
+        n.and_confirm.clone(),
+    );
+    let Some(selection) = selector.run() else {
+        return Ok(None);
+    };
+    Ok(Some(match selection {
+        Selection::Cd { path } => scripts::script_cd(&path),
+        Selection::Mkdir { path } => scripts::script_mkdir_cd(&path),
+        Selection::Rename {
+            base_path,
+            old,
+            new,
+        } => scripts::script_rename(&base_path, &old, &new),
+        Selection::Ascend {
+            source,
+            dest,
+            basename,
+            base_path,
+        } => scripts::script_ascend(&source, &dest, &basename, &base_path),
+        Selection::Delete {
+            basenames,
+            base_path,
+        } => scripts::script_delete(&basenames, &base_path, &ctx.cwd),
+    }))
 }
 
 /// Port of `cmd_init!` (`try.rb:1172-1183`): positional path only when it

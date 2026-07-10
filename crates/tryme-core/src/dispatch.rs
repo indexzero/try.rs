@@ -10,7 +10,9 @@ use crate::help::global_help;
 use crate::naming::{resolve_unique_name_with_versioning, squeeze_ws_to_hyphen, worktree_path};
 use crate::scripts;
 use crate::testkeys::parse_test_keys;
-use crate::wrappers::{detect_shell, expand_path, init_snippet, is_fish, shell_rc_file, Shell};
+use crate::wrappers::{
+    detect_shell, expand_path, init_snippet, is_fish, resolve_self_path, shell_rc_file, Shell,
+};
 use std::io::Write;
 use std::path::{Path, PathBuf};
 
@@ -289,7 +291,7 @@ fn cmd_cd(
 /// Port of `cmd_init!` (`try.rb:1172-1183`): positional path only when it
 /// starts with `/`; fish vs bash selection via `fish?`.
 fn build_init_snippet(args: &[String], ctx: &Ctx, tries_path: &Path) -> String {
-    let script_path = expand_path(&ctx.arg0, &ctx.cwd, ctx.env.home.as_deref());
+    let script_path = resolve_self_path(&ctx.arg0, &ctx.cwd, &ctx.env);
     let explicit_path = args
         .first()
         .filter(|a| a.starts_with('/'))
@@ -305,7 +307,7 @@ fn build_init_snippet(args: &[String], ctx: &Ctx, tries_path: &Path) -> String {
 /// Port of `cmd_install!` (`try.rb:1185-1228`): detect shell, locate the rc
 /// file, append the wrapper idempotently. All messages to stderr.
 fn cmd_install(args: &[String], ctx: &Ctx, tries_path: &Path, err: &mut dyn Write) -> u8 {
-    let script_path = expand_path(&ctx.arg0, &ctx.cwd, ctx.env.home.as_deref());
+    let script_path = resolve_self_path(&ctx.arg0, &ctx.cwd, &ctx.env);
     let explicit_path = args
         .first()
         .filter(|a| a.starts_with('/'))

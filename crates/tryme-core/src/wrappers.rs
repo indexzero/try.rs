@@ -46,6 +46,44 @@ pub fn expand_path(path: &str, base: &Path, home: Option<&str>) -> PathBuf {
     out
 }
 
+/// Resolve the self path for wrapper emission. Ruby's `File.expand_path($0)`
+/// is always absolute for shebang scripts (the kernel hands the interpreter
+/// the script's full path); a compiled binary invoked from PATH gets a bare
+/// `argv[0]`, which `expand_path` would wrongly glue onto the cwd. Rule:
+/// separator → `expand_path` (lexical, no symlink resolution — the
+/// `test_14` grep depends on that); bare name → first executable PATH hit;
+/// last resort → `current_exe` (symlink-resolved, but better than a path
+/// that does not exist).
+#[must_use]
+pub fn resolve_self_path(arg0: &str, cwd: &Path, env: &Env) -> PathBuf {
+    if arg0.contains(std::path::MAIN_SEPARATOR) {
+        return expand_path(arg0, cwd, env.home.as_deref());
+    }
+    if let Some(paths) = &env.path {
+        for dir in std::env::split_paths(paths) {
+            if dir.as_os_str().is_empty() {
+                continue;
+            }
+            let cand = dir.join(arg0);
+            if is_executable_file(&cand) {
+                return expand_path(&cand.to_string_lossy(), cwd, env.home.as_deref());
+            }
+        }
+    }
+    std::env::current_exe().unwrap_or_else(|_| cwd.join(arg0))
+}
+
+#[cfg(unix)]
+fn is_executable_file(p: &Path) -> bool {
+    use std::os::unix::fs::PermissionsExt;
+    std::fs::metadata(p).is_ok_and(|m| m.is_file() && m.permissions().mode() & 0o111 != 0)
+}
+
+#[cfg(not(unix))]
+fn is_executable_file(p: &Path) -> bool {
+    p.is_file()
+}
+
 /// Shells the wrapper templates distinguish.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Shell {

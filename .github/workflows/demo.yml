@@ -1,8 +1,10 @@
 name: Demo
 
-# Render demo.tape with vhs (charmbracelet/vhs-action@v2.1.0, verified
-# 2026-07-10). Runs on demand or when the tape changes; uploads the gif as
-# an artifact for review — committing it back is a human decision.
+# Render demo.tape with vhs. charmbracelet/vhs-action is NOT used: it
+# unconditionally downloads ffmpeg assets pinned to "ffmpeg-n5.1*" from
+# BtbN/FFmpeg-Builds' latest release, which no longer carries them — the
+# action fails on every run (verified 2026-07-11 against its
+# src/dependencies.ts). Plain installs instead.
 
 on:
   workflow_dispatch:
@@ -19,10 +21,12 @@ jobs:
       - uses: Swatinem/rust-cache@v2.9.1
       - name: Build release binary
         run: cargo build --release --locked
+      - name: Install vhs dependencies (ffmpeg, ttyd)
+        run: sudo apt-get update -q && sudo apt-get install -y -q ffmpeg ttyd
+      - name: Install vhs (pinned)
+        run: go install github.com/charmbracelet/vhs@v0.11.0
       - name: Render demo.tape
-        uses: charmbracelet/vhs-action@v2.1.0
-        with:
-          path: demo.tape
+        run: ~/go/bin/vhs demo.tape
       - uses: actions/upload-artifact@v4
         with:
           name: demo-gif

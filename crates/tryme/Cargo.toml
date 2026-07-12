@@ -23,8 +23,12 @@ path = "src/main.rs"
 try-me-maybe-core.workspace = true
 clap.workspace = true
 clap_usage.workspace = true
-anyhow.workspace = true
 chrono.workspace = true
+
+# cargo-machete can't map the package name to the renamed lib target
+# ([lib] name = "tryme_core"), so it false-positives this real dependency.
+[package.metadata.cargo-machete]
+ignored = ["try-me-maybe-core"]
 
 [dev-dependencies]
 tempfile.workspace = true

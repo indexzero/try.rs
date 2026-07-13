@@ -68,11 +68,12 @@
           craneLib = crane.mkLib pkgs;
 
           commonArgs = {
-            # Root Cargo.toml is a virtual workspace; name the derivations
-            # from the bin crate's manifest (else crane warns + placeholders)
-            inherit (craneLib.crateNameFromCargoToml {
-              cargoToml = ./crates/tryme/Cargo.toml;
-            }) pname version;
+            # Root Cargo.toml is a virtual workspace and the crates inherit
+            # version.workspace = true, which crateNameFromCargoToml cannot
+            # resolve — read the workspace table directly.
+            pname = "try-me-maybe";
+            version =
+              (builtins.fromTOML (builtins.readFile ./Cargo.toml)).workspace.package.version;
             src = craneLib.cleanCargoSource ./.;
             strictDeps = true;
           };
@@ -81,6 +82,11 @@
 
           tryme = craneLib.buildPackage (commonArgs // {
             inherit cargoArtifacts;
+            # cargo tests are the cargo CI jobs' gate; the flake's own check
+            # is the conformance suite below. They also cannot pass here by
+            # construction: cleanCargoSource strips non-cargo files, so the
+            # usage-spec freshness and oracle fixtures are absent.
+            doCheck = false;
             meta = with pkgs.lib; {
               description = "Fresh directories for every vibe - a byte-conformant Rust port of tobi/try";
               homepage = "https://github.com/indexzero/try.rs";

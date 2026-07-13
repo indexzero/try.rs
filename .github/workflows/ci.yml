@@ -141,6 +141,12 @@ jobs:
         uses: DeterminateSystems/magic-nix-cache-action@v13
       - name: Flake check
         run: nix flake check -L
+      - name: Upload flake.lock (bootstrap/update from a machine without nix)
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: flake-lock
+          path: flake.lock
 
   spec-guard:
     name: spec/tests integrity (spec-sync label required)

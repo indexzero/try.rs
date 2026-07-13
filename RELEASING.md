@@ -3,8 +3,18 @@
 One-time setup (owner; these are the credential-boundary steps the release
 pipeline needs):
 
-1. **Create the tap repo**: `gh repo create indexzero/homebrew-tap --public`
-   (dist pushes the generated formula there).
+1. **Create the tap repo**: `gh repo create indexzero/homebrew-tap --public --add-readme`
+   (`--add-readme` matters: the publish job checkouts the repo and pushes to its
+   default branch, so it must have at least one commit).
+
+   This is a **registry-style tap**: dist's bot commits a generated *binary*
+   formula whose `url`s point at the GitHub Release artifacts — the tap never
+   builds anything. Do **not** scaffold it with `brew tap-new`; that installs
+   test-bot CI designed for build-from-source taps (PR → bottle → merge),
+   which would fire on and fight every bot push. Naming rule: the repo slug is
+   `indexzero/homebrew-tap` (what dist's `tap =` config wants), and brew's CLI
+   addresses it as `indexzero/tap` — `user/xyz` expands to
+   `github.com/user/homebrew-xyz`.
 2. **Add the tap token**: create a fine-grained PAT with write access to
    `indexzero/homebrew-tap` and add it as the `HOMEBREW_TAP_TOKEN` actions
    secret on this repo.

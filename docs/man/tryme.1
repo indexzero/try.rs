@@ -1,0 +1,65 @@
+.TH TRYME 1
+.SH NAME
+tryme \- Ephemeral workspace manager — fuzzy\-searchable, dated experiment directories
+.SH SYNOPSIS
+\fBtryme\fR [OPTIONS] [COMMAND]
+.SH DESCRIPTION
+A Rust port of tobi/try. The TUI renders on stderr and the chosen action is emitted as a shell script on stdout; the `try` shell function (from `tryme init`) evals it. Conformance target: tobi/try v1.9.3.
+.PP
+.SH OPTIONS
+.TP
+\fB\-h, \-\-help\fR
+Show help (printed to stderr)
+.TP
+\fB\-v, \-\-version\fR
+Show version (printed to stderr)
+.TP
+\fB\-\-path\fR \fI<PATH>\fR
+Tries directory (default: ~/src/tries); last occurrence wins
+.TP
+\fB\-\-no\-colors\fR
+Disable ANSI styling (NO_COLOR env is also honored)
+.TP
+\fB\-\-no\-expand\-tokens\fR
+Alias of \-\-no\-colors (historical name)
+.TP
+\fB\-\-and\-exit\fR
+Render one frame and exit (test harness)
+.TP
+\fB\-\-and\-type\fR \fI<VALUE>\fR
+Pre\-seed the input buffer (test harness)
+.TP
+\fB\-\-and\-keys\fR \fI<VALUE>\fR
+Inject a key sequence (test harness)
+.TP
+\fB\-\-and\-confirm\fR \fI<VALUE>\fR
+Substitute for delete\-confirmation input; only literal YES confirms (test harness)
+.TP
+\fB\-\-usage\-spec\fR
+Emit the usage KDL spec on stdout and exit
+.SH COMMANDS
+.TP
+\fBinit\fR
+Output the `try` shell wrapper function
+.TP
+\fBinstall\fR
+Append the wrapper to your shell rc file (idempotent)
+.TP
+\fBclone\fR
+Clone a git repo into a date\-prefixed try directory
+.TP
+\fBworktree\fR
+Create a detached worktree try from a git repo (or `dir` for the cwd)
+.TP
+\fBexec\fR
+Manual mode: emit the shell script on stdout (what the wrapper calls)
+.SH "TRYME INIT"
+Output the `try` shell wrapper function
+.PP
+\fBUsage:\fR tryme init [<ABS_PATH>]
+.PP
+\fBArguments:\fR
+.PP
+.TP
+\fB<ABS_PATH>\fR
+Absolute tries path baked into the wrapper (must start with /)

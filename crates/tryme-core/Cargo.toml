@@ -16,11 +16,9 @@ authors.workspace = true
 name = "tryme_core"
 
 [dependencies]
-thiserror.workspace = true
 rustix.workspace = true
 signal-hook.workspace = true
 chrono.workspace = true
-directories.workspace = true
 
 [dev-dependencies]
 tempfile.workspace = true

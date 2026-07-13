@@ -5,7 +5,7 @@ resolver = "2"
 members = ["crates/tryme-core", "crates/tryme"]
 
 [workspace.package]
-version = "0.0.0"
+version = "0.1.0"
 edition = "2021"
 # MSRV set empirically: kdl 6.7.1 (via clap_usage) requires rustc 1.95;
 # the full workspace builds on 1.95 (verified 2026-07-10). CI-tested below.
@@ -20,16 +20,13 @@ authors = ["Charlie Robbins <charlie.robbins@gmail.com>"]
 [workspace.dependencies]
 clap = { version = "4.6", features = ["derive", "env", "wrap_help"] }
 clap_usage = "2.0"
-thiserror = "2"
-anyhow = "1"
 rustix = { version = "1.1", features = ["termios", "stdio", "event"] }
 signal-hook = "0.4"
 chrono = { version = "0.4", default-features = false, features = ["clock"] }
-directories = "6"
 tempfile = "3"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-try-me-maybe-core = { path = "crates/tryme-core" }
+try-me-maybe-core = { path = "crates/tryme-core", version = "0.1.0" }
 
 [workspace.lints.rust]
 unsafe_code = "forbid"
@@ -47,5 +44,32 @@ print_stderr = "deny"
 [profile.release]
 lto = "thin"
 strip = true
-# panic stays "unwind" (default): the TUI's terminal-restoration panic hook
-# requires it — do not add panic = "abort".
+# panic stays "unwind" (default, inherited by profile.dist): the selector's
+# Drop-based terminal restoration must run on panic — never add panic="abort".
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"
+
+# Config for 'dist'
+[workspace.metadata.dist]
+# The preferred dist version to use in CI (Cargo.toml SemVer syntax)
+cargo-dist-version = "0.32.0"
+# CI backends to support
+ci = "github"
+# The installers to generate for each app
+# powershell dropped: dist skips it with no Windows targets (ADR-0006)
+installers = ["shell", "homebrew"]
+# A GitHub repo to push Homebrew formulas to
+tap = "indexzero/homebrew-tap"
+# Publish jobs to run in CI
+publish-jobs = ["homebrew"]
+# Target platforms to build apps for (Rust target-triple syntax)
+targets = ["aarch64-apple-darwin", "aarch64-unknown-linux-musl", "x86_64-apple-darwin", "x86_64-unknown-linux-musl"]
+# Whether to enable GitHub Attestations
+github-attestations = true
+# Path that installers should place binaries in
+install-path = "CARGO_HOME"
+# Whether to install an updater program
+install-updater = false

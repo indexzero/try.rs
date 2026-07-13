@@ -23,8 +23,12 @@ path = "src/main.rs"
 try-me-maybe-core.workspace = true
 clap.workspace = true
 clap_usage.workspace = true
-anyhow.workspace = true
 chrono.workspace = true
+
+# cargo-machete can't map the package name to the renamed lib target
+# ([lib] name = "tryme_core"), so it false-positives this real dependency.
+[package.metadata.cargo-machete]
+ignored = ["try-me-maybe-core"]
 
 [dev-dependencies]
 tempfile.workspace = true
@@ -32,12 +36,11 @@ tempfile.workspace = true
 [lints]
 workspace = true
 
-# Present from the first commit so `cargo binstall` works the moment
-# releases exist. UNVERIFIED until the release pipeline lands: pkg-url and
-# pkg-fmt must match dist's actual artifact naming — verify with
-# `cargo binstall --dry-run` before the first release (see
-# docs/adr/0004-staging.md).
+# Verified against dist 0.32.0 output (local `dist build --artifacts=local`,
+# 2026-07-10): artifacts are `{name}-{target}.tar.xz` containing
+# `{name}-{target}/{bin}`. Re-verify with `cargo binstall try-me-maybe
+# --dry-run` once the first GitHub release exists.
 [package.metadata.binstall]
 pkg-url = "{ repo }/releases/download/v{ version }/{ name }-{ target }{ archive-suffix }"
 bin-dir = "{ name }-{ target }/{ bin }{ binary-ext }"
-pkg-fmt = "tgz"
+pkg-fmt = "txz"

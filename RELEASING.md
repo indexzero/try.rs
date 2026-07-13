@@ -1,26 +1,9 @@
 # Releasing
 
-One-time setup (owner; these are the credential-boundary steps the release
-pipeline needs):
-
-1. **Create the tap repo**: `gh repo create indexzero/homebrew-tap --public --add-readme`
-   (`--add-readme` matters: the publish job checkouts the repo and pushes to its
-   default branch, so it must have at least one commit).
-
-   This is a **registry-style tap**: dist's bot commits a generated *binary*
-   formula whose `url`s point at the GitHub Release artifacts — the tap never
-   builds anything. Do **not** scaffold it with `brew tap-new`; that installs
-   test-bot CI designed for build-from-source taps (PR → bottle → merge),
-   which would fire on and fight every bot push. Naming rule: the repo slug is
-   `indexzero/homebrew-tap` (what dist's `tap =` config wants), and brew's CLI
-   addresses it as `indexzero/tap` — `user/xyz` expands to
-   `github.com/user/homebrew-xyz`.
-2. **Add the tap token**: create a fine-grained PAT with write access to
-   `indexzero/homebrew-tap` and add it as the `HOMEBREW_TAP_TOKEN` actions
-   secret on this repo.
-3. **crates.io**: `cargo login` with an owner token.
-
-Per release:
+Preconditions (assert, don't set up here): the `indexzero/homebrew-tap` repo
+exists with a default branch, the `HOMEBREW_TAP_TOKEN` actions secret is set
+on this repo, and you are logged in to crates.io. If any of these fail, see
+the provisioning notes in the PR that introduced the release pipeline.
 
 1. Roll the changelog and review it:
    `mise run changelog && git diff CHANGELOG.md`

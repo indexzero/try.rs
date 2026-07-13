@@ -14,8 +14,13 @@ TMP=$(mktemp -d)
 trap 'rm -rf "$TMP"' EXIT
 mkdir -p completions docs/man
 
+# Completions fetch the spec from the installed binary at completion time
+# (--usage-cmd) instead of embedding a copy of try.usage.kdl: the shims stay
+# frozen across surface changes, and completions always match the binary
+# version the user actually runs. The man page still renders from the
+# committed spec (it must be buildable without the binary installed).
 for shell in bash zsh fish; do
-  usage g completion "$shell" tryme -f try.usage.kdl > "$TMP/tryme.$shell"
+  usage g completion "$shell" tryme --usage-cmd 'tryme --usage-spec' > "$TMP/tryme.$shell"
 done
 usage g manpage -f try.usage.kdl -o "$TMP/tryme.1" >/dev/null
 

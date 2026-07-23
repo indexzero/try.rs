@@ -1,0 +1,72 @@
+name: CLI improvement
+description: Propose a command, flag, output, or scripting workflow.
+title: "[CLI]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for changes to commands, flags, emitted shell scripts, exit behavior, or other non-interactive interfaces.
+
+  - type: checkboxes
+    id: existing-issues
+    attributes:
+      label: Existing issues
+      options:
+        - label: I searched the existing issues for this CLI request.
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What workflow is difficult or impossible with the current CLI?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-interface
+    attributes:
+      label: Proposed command-line interface
+      description: Show the proposed invocation, flags, arguments, output, and exit behavior.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: Explain the state changes and user-visible result of the command.
+    validations:
+      required: true
+
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility and scripting considerations
+      description: Note interactions with `try exec`, shell wrappers, environment variables, upstream parity, or existing scripts.
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      placeholder: |
+        - [ ] `try ...` performs ...
+        - [ ] The command exits non-zero when ...
+        - [ ] Help and completion output include ...
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: try version
+      placeholder: try v0.1.0
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add related commands, prior art, or implementation notes.

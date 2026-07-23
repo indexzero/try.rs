@@ -1,0 +1,83 @@
+name: TUI improvement
+description: Propose or refine an interaction in try's terminal interface.
+title: "[TUI]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve try's terminal workflow. Describe the interaction from the user's point of view and include the exact keys involved.
+
+  - type: checkboxes
+    id: existing-issues
+    attributes:
+      label: Existing issues
+      options:
+        - label: I searched the existing issues for this interaction.
+          required: true
+
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Current workflow
+      description: What are you trying to accomplish, and what does the TUI do today?
+      placeholder: |
+        1. Run `try`
+        2. Select a worktree try
+        3. Press Ctrl-G
+        4. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-interaction
+    attributes:
+      label: Proposed interaction
+      description: Describe the prompts, defaults, keys, focus changes, and final result you expect.
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why this improves the TUI
+      description: Explain the friction, ambiguity, or repeated work this change removes.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: List observable behaviors that would make this complete.
+      placeholder: |
+        - [ ] The prompt defaults to ...
+        - [ ] Escape cancels without changing ...
+        - [ ] The resulting worktree ...
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: try version
+      description: Paste the first line of `try --version` or `try --help`.
+      placeholder: try v0.1.0
+
+  - type: dropdown
+    id: shell
+    attributes:
+      label: Shell
+      options:
+        - zsh
+        - bash
+        - fish
+        - PowerShell
+        - Other
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add mockups, terminal recordings, related tools, or implementation notes.
